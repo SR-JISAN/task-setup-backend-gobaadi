@@ -4,9 +4,10 @@ model Users {
     email String @unique
     password String
     role UsersRole @default(USERS)
+    profile UserProfiles?
     createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
+    updatedAt          DateTime     @updatedAt
 
- @@index([name,role])
-  @@map("users")
+@@index([name,role,createdAt])
+@@map("users")
 }
