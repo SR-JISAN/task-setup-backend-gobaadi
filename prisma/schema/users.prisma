@@ -1,0 +1,12 @@
+model Users {
+    id String @id @default(uuid())
+    name String @db.VarChar(100)
+    email String @unique
+    password String
+    role UsersRole @default(USERS)
+    createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+ @@index([name,role])
+  @@map("users")
+}
