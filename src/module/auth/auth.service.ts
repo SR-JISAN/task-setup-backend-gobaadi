@@ -71,7 +71,7 @@ const register = async (payload: IUser) => {
   );
   const templatePath = path.join(
     process.cwd(),
-    "/src/app/template/email.verify.ejs",
+    "/src/template/email.verify.ejs",
   );
 
   const html = await ejs.renderFile(templatePath, {
@@ -149,7 +149,6 @@ const emailVerify = async (payload: IVerifyEmail) => {
   await redisClient.del(key);
 
   const verifiedUser: IUser = JSON.parse(redisUserData);
-  console.log(verifiedUser);
 
   const result = await prisma.users.create({
     data: {
@@ -199,7 +198,7 @@ const emailVerify = async (payload: IVerifyEmail) => {
 
   const templatePath = path.join(
     process.cwd(),
-    "/src/app/template/welcome.email.ejs",
+    "/src/template/welcome.email.ejs",
   );
 
   const html = await ejs.renderFile(templatePath, {
