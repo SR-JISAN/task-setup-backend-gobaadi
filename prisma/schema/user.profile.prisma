@@ -9,5 +9,5 @@ model UserProfiles {
     user Users @relation(fields: [userId],references: [id],onDelete: Cascade,onUpdate: Cascade)
 
 @@index([userId,createdAt])
-@@map("userProfile")
+@@map("userProfiles")
 }
