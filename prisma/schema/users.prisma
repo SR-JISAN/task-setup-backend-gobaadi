@@ -4,6 +4,15 @@ model Users {
     email String @unique
     password String
     role UsersRole @default(USERS)
+    authProvider       AuthProvider @default(CREDENTIALS)
+  googleID           String?      @unique
+  status             UserStatus   @default(ACTIVE)
+  emailVerified      Boolean      @default(false)
+  imageURL           String?      @default("")
+  imagePublicId      String?      @default("")
+  needPasswordChange Boolean      @default(false)
+  isDeleted          Boolean      @default(false)
+  deletedAt          DateTime?
     profile UserProfiles?
     createdAt          DateTime     @default(now())
     updatedAt          DateTime     @updatedAt

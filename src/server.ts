@@ -1,6 +1,8 @@
 import app from "./app";
 import config from "./config"
+import { transporter } from "./lib/nodmailer";
 import { prisma } from "./lib/prisma";
+import { redisClient } from "./lib/redis";
 import { AdminSeed } from "./utils/seed";
 
 const port = config.port
@@ -8,6 +10,16 @@ const port = config.port
     try {
        await prisma.$connect();
        AdminSeed();
+        //redis connected
+
+    await redisClient.connect()
+
+
+
+    //nodemailer connected
+
+    await transporter.verify()
+      
         app.listen(port,()=>{
             console.log(`Server is running on port ${port}`);
         })
